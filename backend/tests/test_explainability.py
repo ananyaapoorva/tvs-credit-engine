@@ -5,8 +5,7 @@ Verifies correct generation of human-readable explanations
 for credit score components.
 """
 
-import pytest
-from app.services.explainability import generate_explanation, _format_currency
+from app.services.explainability import _format_currency, generate_explanation
 
 
 class TestFormatCurrency:

@@ -5,18 +5,28 @@ Tests all 6 data source scorers, weighted combinations,
 risk categorization, and edge cases.
 """
 
-import pytest
 from app.schemas.credit_input import (
-    GSTData, UPIData, TelecomData, UtilityData,
-    EcommerceData, MobilityData, CreditApplicationInput,
+    CreditApplicationInput,
+    EcommerceData,
+    GSTData,
+    MobilityData,
+    TelecomData,
+    UPIData,
+    UtilityData,
 )
 from app.services.scoring_engine import (
-    score_gst_data, score_upi_data, score_telecom_data,
-    score_utility_data, score_ecommerce_data, score_mobility_data,
-    categorize_risk, calculate_confidence, calculate_credit_score,
-    _clamp, _normalize,
+    _clamp,
+    _normalize,
+    calculate_confidence,
+    calculate_credit_score,
+    categorize_risk,
+    score_ecommerce_data,
+    score_gst_data,
+    score_mobility_data,
+    score_telecom_data,
+    score_upi_data,
+    score_utility_data,
 )
-
 
 # ─── Helper Fixtures ─────────────────────────────────────────────────────────
 

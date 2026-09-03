@@ -8,18 +8,23 @@ comparing customers, and health checks.
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from app.database import get_db, init_db
+from app.database import get_db
+from app.models.credit_score import CreditScore
 from app.models.customer import Customer
-from app.models.credit_score import CreditScore, RiskCategory
 from app.schemas.credit_input import CreditApplicationInput
 from app.schemas.credit_output import (
-    CreditScoreOutput, ComponentScores, ExplainabilityOutput,
-    ExplainabilityFactor, CustomerScoresResponse, CreditScoreListItem,
-    CompareResponse, HealthResponse, ErrorResponse,
+    CompareResponse,
+    ComponentScores,
+    CreditScoreListItem,
+    CreditScoreOutput,
+    CustomerScoresResponse,
+    ExplainabilityFactor,
+    ExplainabilityOutput,
+    HealthResponse,
 )
-from app.services.scoring_engine import calculate_credit_score
-from app.services.explainability import generate_explanation
 from app.services.data_validator import validate_application_data
+from app.services.explainability import generate_explanation
+from app.services.scoring_engine import calculate_credit_score
 from app.utils.mock_data import get_all_mock_customers, get_mock_customer
 
 router = APIRouter(prefix="/api/v1", tags=["credit"])

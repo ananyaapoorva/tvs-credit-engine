@@ -6,6 +6,7 @@ informal sector workers, and first-time borrowers.
 """
 
 import random
+
 from faker import Faker
 
 fake = Faker("en_IN")

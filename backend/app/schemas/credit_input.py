@@ -1,7 +1,7 @@
 """Pydantic schemas for credit application input validation."""
 
 from datetime import date
-from typing import Optional
+
 from pydantic import BaseModel, Field, field_validator
 
 
@@ -59,12 +59,12 @@ class CreditApplicationInput(BaseModel):
     date_of_birth: date = Field(..., description="Date of birth")
     occupation: str = Field(..., description="Occupation type")
     loan_amount_requested: float = Field(..., gt=0, description="Requested loan amount in INR")
-    gst_data: Optional[GSTData] = Field(default_factory=GSTData)
-    upi_data: Optional[UPIData] = Field(default_factory=UPIData)
-    telecom_data: Optional[TelecomData] = Field(default_factory=TelecomData)
-    utility_data: Optional[UtilityData] = Field(default_factory=UtilityData)
-    ecommerce_data: Optional[EcommerceData] = Field(default_factory=EcommerceData)
-    mobility_data: Optional[MobilityData] = Field(default_factory=MobilityData)
+    gst_data: GSTData | None = Field(default_factory=GSTData)
+    upi_data: UPIData | None = Field(default_factory=UPIData)
+    telecom_data: TelecomData | None = Field(default_factory=TelecomData)
+    utility_data: UtilityData | None = Field(default_factory=UtilityData)
+    ecommerce_data: EcommerceData | None = Field(default_factory=EcommerceData)
+    mobility_data: MobilityData | None = Field(default_factory=MobilityData)
 
     @field_validator("phone_number")
     @classmethod

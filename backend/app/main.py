@@ -5,6 +5,7 @@ Main entry point for the backend API server.
 """
 
 from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 

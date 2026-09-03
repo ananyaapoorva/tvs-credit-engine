@@ -1,11 +1,11 @@
 """Customer database model."""
 
-import uuid
 import enum
-from datetime import datetime, date
+import uuid
+from datetime import date, datetime
 from decimal import Decimal
 
-from sqlalchemy import String, Enum, Numeric, DateTime, Date
+from sqlalchemy import Date, DateTime, Enum, Numeric, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database import Base

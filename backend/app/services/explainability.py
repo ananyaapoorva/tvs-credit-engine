@@ -5,11 +5,16 @@ Provides transparent, detailed breakdowns of how each data source
 contributes to the overall credit risk assessment.
 """
 
-from typing import Dict
+
 from app.utils.constants import (
-    HIGH_RISK_THRESHOLD, MEDIUM_RISK_THRESHOLD,
-    GST_WEIGHT, UPI_WEIGHT, TELECOM_WEIGHT,
-    UTILITY_WEIGHT, ECOMMERCE_WEIGHT, MOBILITY_WEIGHT,
+    ECOMMERCE_WEIGHT,
+    GST_WEIGHT,
+    HIGH_RISK_THRESHOLD,
+    MEDIUM_RISK_THRESHOLD,
+    MOBILITY_WEIGHT,
+    TELECOM_WEIGHT,
+    UPI_WEIGHT,
+    UTILITY_WEIGHT,
 )
 
 
@@ -24,7 +29,7 @@ def _format_currency(amount: float) -> str:
 
 
 def generate_explanation(
-    scores: Dict[str, float],
+    scores: dict[str, float],
     input_data: dict,
 ) -> dict:
     """

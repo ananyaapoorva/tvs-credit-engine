@@ -1,7 +1,7 @@
 """Pydantic schemas for credit score output responses."""
 
 from datetime import datetime
-from typing import List, Optional, Dict
+
 from pydantic import BaseModel, Field
 
 
@@ -26,7 +26,7 @@ class ExplainabilityFactor(BaseModel):
 
 class ExplainabilityOutput(BaseModel):
     """Complete explainability breakdown."""
-    factors: List[ExplainabilityFactor] = Field(description="List of contributing factors")
+    factors: list[ExplainabilityFactor] = Field(description="List of contributing factors")
     summary: str = Field(description="Overall summary of risk assessment")
     recommendation: str = Field(description="Recommended action")
 
@@ -56,14 +56,14 @@ class CustomerScoresResponse(BaseModel):
     """Response for listing all scores for a customer."""
     customer_id: str
     customer_name: str
-    scores: List[CreditScoreListItem]
+    scores: list[CreditScoreListItem]
     total_count: int
 
 
 class CompareResponse(BaseModel):
     """Side-by-side comparison of two customer scores."""
-    customer_1: Optional[CreditScoreOutput] = None
-    customer_2: Optional[CreditScoreOutput] = None
+    customer_1: CreditScoreOutput | None = None
+    customer_2: CreditScoreOutput | None = None
 
 
 class HealthResponse(BaseModel):
@@ -76,4 +76,4 @@ class HealthResponse(BaseModel):
 class ErrorResponse(BaseModel):
     """Standard error response."""
     detail: str
-    error_code: Optional[str] = None
+    error_code: str | None = None
