@@ -1,17 +1,20 @@
-#  TVS Credit EPIC 8 Hackathon: Alternative Data Credit Engine
+# TVS Credit EPIC 8 Hackathon: Alternative Data Credit Engine
 
-An AI-powered alternative credit scoring engine leveraging GST data, UPI transaction trends, telecom recharge patterns, utility bill payments, e-commerce activity, and mobility/vehicle usage patterns to generate explainable risk scores for first-time borrowers, gig workers, small merchants, and informal sector workers.
+## Problem Statement
+The objective of this project is to build an AI-powered alternative credit scoring engine. Traditional credit scoring relies heavily on credit bureau histories (like CIBIL), which excludes a massive segment of the population, including first-time borrowers, gig workers, small merchants, and informal sector workers. 
 
-##  Key Features
+This engine solves this problem by leveraging alternative data points—such as GST filings, UPI transaction trends, telecom recharge patterns, utility bill payments, e-commerce activity, and mobility/vehicle usage patterns—to generate deterministic, explainable risk scores.
 
-*   **Multi-Source Alternative Data Integration:** Processes 6 disparate data sources (GST, UPI, Telecom, Utility, E-commerce, Mobility).
-*   **Deterministic Rule-Based Scoring:** Transparent, explainable, and fully deterministic risk scoring logic mapped from 0-100.
-*   **Explainable AI (XAI) Output:** Generates human-readable summaries and categorizes risk factors (positive/negative/neutral) dynamically.
-*   **Dynamic Weighting:** Calculates overall risk based on a weighted average tailored for gig and informal sectors.
-*   **Comprehensive API:** FastAPI backend with robust Pydantic validation and comprehensive endpoints.
-*   **Responsive Dashboard:** React/Vite frontend with an interactive multi-step application form and animated visual gauges.
+## Key Features
 
-##  Architecture
+* **Multi-Source Alternative Data Integration:** Processes 6 disparate data sources (GST, UPI, Telecom, Utility, E-commerce, Mobility).
+* **Deterministic Rule-Based Scoring:** Transparent, explainable, and fully deterministic risk scoring logic mapped from 0-100.
+* **Explainable AI (XAI) Output:** Generates human-readable summaries and categorizes risk factors (positive/negative/neutral) dynamically.
+* **Dynamic Weighting:** Calculates overall risk based on a weighted average tailored for gig and informal sectors.
+* **Comprehensive API:** FastAPI backend with robust Pydantic validation and comprehensive endpoints.
+* **Responsive Dashboard:** React/Vite frontend with an interactive multi-step application form and animated visual gauges.
+
+## Architecture
 
 ```mermaid
 graph TD
@@ -35,24 +38,35 @@ graph TD
     J --> A
 ```
 
-##  Technology Stack
+## Technology Stack
 
-*   **Backend:** Python 3.11+, FastAPI, SQLAlchemy, Pydantic, Pytest (95% coverage)
-*   **Frontend:** React 18, Vite, React Router, Custom CSS (No Tailwind)
-*   **Infrastructure:** Docker, Docker Compose, GitHub Actions (CI/CD)
+* **Backend:** Python 3.11+, FastAPI, SQLAlchemy, Pydantic, Pytest (100% test pass rate)
+* **Frontend:** React 18, Vite, React Router, Custom CSS (No Tailwind)
+* **Infrastructure:** Docker, Docker Compose, GitHub Actions (CI/CD)
 
-##  Setup & Installation
+## Alternative Scoring Algorithm
+
+The engine calculates risk deterministically using the following weighted data sources. If a data source is completely missing, the engine dynamically redistributes the weight proportionally to the remaining provided data sources.
+
+* **UPI Data (30%):** Evaluates transaction velocity, volume, and consistency over active months.
+* **GST Data (25%):** Assesses business health via annual turnover thresholds and filing consistency. High-risk business types receive dynamic penalties.
+* **Telecom Data (15%):** Calculates financial discipline through monthly recharge amounts and historical consistency.
+* **Utility Data (15%):** Weighs bill payment timeliness and historical track records.
+* **E-commerce Data (10%):** Analyzes purchase frequency and penalizes high return rates (which indicate cashflow instability).
+* **Mobility Data (5%):** Adds supplementary confidence based on vehicle ownership and fuel expense tracking.
+
+## Setup & Installation
 
 ### Option 1: Docker Compose (Recommended)
 
-1.  Ensure you have Docker and Docker Compose installed.
-2.  Clone the repository and run:
+1. Ensure you have Docker and Docker Compose installed.
+2. Clone the repository and run:
     ```bash
-    docker-compose up --build
+    docker compose up --build
     ```
-3.  Access the applications:
-    *   **Frontend Dashboard:** `http://localhost:80`
-    *   **Backend API Docs (Swagger):** `http://localhost:8000/docs`
+3. Access the applications:
+    * **Frontend Dashboard:** `http://localhost:80`
+    * **Backend API Docs (Swagger):** `http://localhost:8000/docs`
 
 ### Option 2: Local Development Setup
 
@@ -72,17 +86,17 @@ npm install
 npm run dev
 ```
 
-##  Testing
+## Testing
 
-The backend includes a comprehensive test suite (82 tests) covering all scoring rules, business logic, and API endpoints.
+The backend includes a comprehensive test suite covering all scoring rules, business logic, and API endpoints.
 
 ```bash
 cd backend
 source venv/bin/activate
-pytest tests/ -v --cov=app
+PYTHONPATH=. python -m pytest tests/ -v --cov=app --cov-report=xml
 ```
 
-##  API Endpoints
+## API Endpoints
 
 | Method | Endpoint | Description |
 | :--- | :--- | :--- |
@@ -92,14 +106,3 @@ pytest tests/ -v --cov=app
 | `GET` | `/api/v1/credit/customer/{id}/scores` | Get all scores for a customer |
 | `POST` | `/api/v1/credit/compare` | Compare two customers' scores |
 | `GET` | `/api/v1/credit/mock-customers` | Fetch 10 diverse mock profiles for testing |
-
-##  Scoring Logic (Weighting)
-
-*   **UPI Data:** 30%
-*   **GST Data:** 25%
-*   **Telecom Data:** 15%
-*   **Utility Data:** 15%
-*   **E-commerce Data:** 10%
-*   **Mobility Data:** 5%
-
-*(Weights adjust dynamically if certain data sources are missing).*
