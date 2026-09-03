@@ -18,6 +18,7 @@ from app.schemas.credit_output import (
     ComponentScores,
     CreditScoreListItem,
     CreditScoreOutput,
+    CustomerListItem,
     CustomerScoresResponse,
     ExplainabilityFactor,
     ExplainabilityOutput,
@@ -205,6 +206,21 @@ async def compare_customers(
         raise HTTPException(status_code=404, detail="No scores found for either customer")
 
     return result
+
+
+@router.get("/credit/customers", response_model=List[CustomerListItem])
+async def list_customers(db: Session = Depends(get_db)):
+    """Fetch the latest 20 scored customers."""
+    customers = db.query(Customer).order_by(Customer.created_at.desc()).limit(20).all()
+    return [
+        CustomerListItem(
+            customer_id=c.customer_id,
+            name=c.name,
+            phone_number=c.phone_number,
+            occupation=c.occupation,
+            created_at=c.created_at
+        ) for c in customers
+    ]
 
 
 @router.get("/credit/mock-customers")

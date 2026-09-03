@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Results from './pages/Results';
+import CompareApplicants from './pages/CompareApplicants';
 import './index.css';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
             </Link>
             <ul className="navbar-nav">
               <li><Link to="/">Dashboard</Link></li>
+              <li><Link to="/compare">Compare Applicants</Link></li>
               <li><a href="https://github.com/ananyaapoorva/tvs-credit-engine" target="_blank" rel="noopener noreferrer">GitHub</a></li>
             </ul>
           </div>
@@ -24,6 +26,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/results/:scoreId" element={<Results />} />
+            <Route path="/compare" element={<CompareApplicants />} />
           </Routes>
         </main>
 

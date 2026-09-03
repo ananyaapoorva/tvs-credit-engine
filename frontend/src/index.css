@@ -957,3 +957,45 @@ a:hover {
 .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
 .animate-delay-3 { animation-delay: 0.3s; opacity: 0; }
 .animate-delay-4 { animation-delay: 0.4s; opacity: 0; }
+
+/* ─── Print Styles ───────────────────────────────────────────────── */
+@media print {
+  .navbar,
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .container {
+    max-width: 100%;
+    padding: 0;
+  }
+  
+  .card, .form-section, .summary-panel, .recommendation-panel {
+    border: none;
+    box-shadow: none;
+    background: white;
+    padding: 0;
+    margin-bottom: 2rem;
+    page-break-inside: avoid;
+  }
+  
+  .results-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .risk-gauge-container {
+    padding: 0;
+  }
+  
+  .factor-item {
+    background: transparent;
+    border-left-width: 2px;
+    padding: 0.5rem 0;
+  }
+}

@@ -61,6 +61,15 @@ class CustomerScoresResponse(BaseModel):
     total_count: int
 
 
+class CustomerListItem(BaseModel):
+    """Basic customer details for listing."""
+    customer_id: str
+    name: str
+    phone_number: str
+    occupation: str
+    created_at: datetime
+
+
 class CompareResponse(BaseModel):
     """Side-by-side comparison of two customer scores."""
     customer_1: Optional[CreditScoreOutput] = None

@@ -61,7 +61,10 @@ const Results = () => {
           <h1 className="page-title">Credit Assessment Results</h1>
           <p className="page-subtitle">ID: {scoreData.score_id}</p>
         </div>
-        <Link to="/" className="btn btn-outline btn-sm">← Back to New Application</Link>
+        <div style={{ display: 'flex', gap: '1rem' }} className="no-print">
+          <button className="btn btn-primary btn-sm" onClick={() => window.print()}>Export Report (PDF)</button>
+          <Link to="/" className="btn btn-outline btn-sm">← Back to New Application</Link>
+        </div>
       </div>
 
       <div className="results-grid">

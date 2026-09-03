@@ -1,3 +1,5 @@
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer, Tooltip } from 'recharts';
+
 const COMPONENT_LABELS = {
   gst_score: { name: 'GST Filing', emoji: '' },
   upi_score: { name: 'UPI Transactions', emoji: '' },
@@ -18,6 +20,12 @@ const ResultsDashboard = ({ scoreData }) => {
 
   const { component_scores = {} } = scoreData;
 
+  const radarData = Object.entries(COMPONENT_LABELS).map(([key, label]) => ({
+    subject: label.name,
+    A: component_scores[key] ?? 0,
+    fullMark: 100,
+  }));
+
   return (
     <div className="card animate-in animate-delay-2">
       <div className="card-header">
@@ -25,6 +33,18 @@ const ResultsDashboard = ({ scoreData }) => {
         <span className={`badge badge-${scoreData.risk_category}`}>
           {scoreData.risk_category?.toUpperCase()} RISK
         </span>
+      </div>
+
+      <div style={{ height: '250px', width: '100%', marginBottom: '1.5rem' }}>
+        <ResponsiveContainer width="100%" height="100%">
+          <RadarChart cx="50%" cy="50%" outerRadius="70%" data={radarData}>
+            <PolarGrid />
+            <PolarAngleAxis dataKey="subject" tick={{ fontSize: 10 }} />
+            <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} />
+            <Radar name="Score" dataKey="A" stroke="var(--primary)" fill="var(--primary)" fillOpacity={0.4} />
+            <Tooltip />
+          </RadarChart>
+        </ResponsiveContainer>
       </div>
 
       <div>
