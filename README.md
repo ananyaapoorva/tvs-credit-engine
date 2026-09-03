@@ -10,6 +10,9 @@ This engine solves this problem by leveraging alternative data points—such as 
 * **Multi-Source Alternative Data Integration:** Processes 6 disparate data sources (GST, UPI, Telecom, Utility, E-commerce, Mobility).
 * **Deterministic Rule-Based Scoring:** Transparent, explainable, and fully deterministic risk scoring logic mapped from 0-100.
 * **Explainable AI (XAI) Output:** Generates human-readable summaries and categorizes risk factors (positive/negative/neutral) dynamically.
+* **Visual XAI Charts (Radar Charts):** Interactive geographic representation of a borrower's risk signature across all sectors using Recharts.
+* **Side-by-Side Applicant Comparison:** Dedicated UI to compare the risk profiles of two applicants simultaneously for rapid underwriting.
+* **Exportable Credit Reports:** One-click PDF generation of the entire credit assessment and XAI breakdown.
 * **Dynamic Weighting:** Calculates overall risk based on a weighted average tailored for gig and informal sectors.
 * **Comprehensive API:** FastAPI backend with robust Pydantic validation and comprehensive endpoints.
 * **Responsive Dashboard:** React/Vite frontend with an interactive multi-step application form and animated visual gauges.
@@ -104,5 +107,6 @@ PYTHONPATH=. python -m pytest tests/ -v --cov=app --cov-report=xml
 | `POST` | `/api/v1/credit/score` | Submit application & calculate score |
 | `GET` | `/api/v1/credit/score/{id}` | Retrieve specific credit score by ID |
 | `GET` | `/api/v1/credit/customer/{id}/scores` | Get all scores for a customer |
+| `GET` | `/api/v1/credit/customers` | Fetch recent customers for comparison |
 | `POST` | `/api/v1/credit/compare` | Compare two customers' scores |
 | `GET` | `/api/v1/credit/mock-customers` | Fetch 10 diverse mock profiles for testing |
