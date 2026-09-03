@@ -1,10 +1,10 @@
 const COMPONENT_LABELS = {
-  gst_score: { name: 'GST Filing', emoji: '📊' },
-  upi_score: { name: 'UPI Transactions', emoji: '💳' },
-  telecom_score: { name: 'Telecom Recharge', emoji: '📱' },
-  utility_score: { name: 'Utility Payments', emoji: '💡' },
-  ecommerce_score: { name: 'E-commerce Activity', emoji: '🛒' },
-  mobility_score: { name: 'Mobility & Vehicle', emoji: '🚗' },
+  gst_score: { name: 'GST Filing', emoji: '' },
+  upi_score: { name: 'UPI Transactions', emoji: '' },
+  telecom_score: { name: 'Telecom Recharge', emoji: '' },
+  utility_score: { name: 'Utility Payments', emoji: '' },
+  ecommerce_score: { name: 'E-commerce Activity', emoji: '' },
+  mobility_score: { name: 'Mobility & Vehicle', emoji: '' },
 };
 
 const getBarColor = (score) => {
@@ -21,7 +21,7 @@ const ResultsDashboard = ({ scoreData }) => {
   return (
     <div className="card animate-in animate-delay-2">
       <div className="card-header">
-        <h3 className="card-title">📈 Component Score Breakdown</h3>
+        <h3 className="card-title"> Component Score Breakdown</h3>
         <span className={`badge badge-${scoreData.risk_category}`}>
           {scoreData.risk_category?.toUpperCase()} RISK
         </span>

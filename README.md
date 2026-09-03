@@ -1,8 +1,8 @@
-# 🏆 TVS Credit EPIC 8 Hackathon: Alternative Data Credit Engine
+#  TVS Credit EPIC 8 Hackathon: Alternative Data Credit Engine
 
 An AI-powered alternative credit scoring engine leveraging GST data, UPI transaction trends, telecom recharge patterns, utility bill payments, e-commerce activity, and mobility/vehicle usage patterns to generate explainable risk scores for first-time borrowers, gig workers, small merchants, and informal sector workers.
 
-## 🚀 Key Features
+##  Key Features
 
 *   **Multi-Source Alternative Data Integration:** Processes 6 disparate data sources (GST, UPI, Telecom, Utility, E-commerce, Mobility).
 *   **Deterministic Rule-Based Scoring:** Transparent, explainable, and fully deterministic risk scoring logic mapped from 0-100.
@@ -11,7 +11,7 @@ An AI-powered alternative credit scoring engine leveraging GST data, UPI transac
 *   **Comprehensive API:** FastAPI backend with robust Pydantic validation and comprehensive endpoints.
 *   **Responsive Dashboard:** React/Vite frontend with an interactive multi-step application form and animated visual gauges.
 
-## 🏗️ Architecture
+##  Architecture
 
 ```mermaid
 graph TD
@@ -35,13 +35,13 @@ graph TD
     J --> A
 ```
 
-## 🛠️ Technology Stack
+##  Technology Stack
 
 *   **Backend:** Python 3.11+, FastAPI, SQLAlchemy, Pydantic, Pytest (95% coverage)
 *   **Frontend:** React 18, Vite, React Router, Custom CSS (No Tailwind)
 *   **Infrastructure:** Docker, Docker Compose, GitHub Actions (CI/CD)
 
-## 📦 Setup & Installation
+##  Setup & Installation
 
 ### Option 1: Docker Compose (Recommended)
 
@@ -72,7 +72,7 @@ npm install
 npm run dev
 ```
 
-## 🧪 Testing
+##  Testing
 
 The backend includes a comprehensive test suite (82 tests) covering all scoring rules, business logic, and API endpoints.
 
@@ -82,7 +82,7 @@ source venv/bin/activate
 pytest tests/ -v --cov=app
 ```
 
-## 📚 API Endpoints
+##  API Endpoints
 
 | Method | Endpoint | Description |
 | :--- | :--- | :--- |
@@ -93,7 +93,7 @@ pytest tests/ -v --cov=app
 | `POST` | `/api/v1/credit/compare` | Compare two customers' scores |
 | `GET` | `/api/v1/credit/mock-customers` | Fetch 10 diverse mock profiles for testing |
 
-## ⚙️ Scoring Logic (Weighting)
+##  Scoring Logic (Weighting)
 
 *   **UPI Data:** 30%
 *   **GST Data:** 25%

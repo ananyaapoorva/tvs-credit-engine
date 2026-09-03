@@ -25,17 +25,17 @@ const Dashboard = () => {
           
           <div className="features-grid">
             <div className="feature-card">
-              <div className="feature-icon">📊</div>
+              <div className="feature-icon"></div>
               <h3>GST & Digital Trails</h3>
               <p>Analyze business health and compliance through GST filing consistency and turnover.</p>
             </div>
             <div className="feature-card">
-              <div className="feature-icon">💳</div>
+              <div className="feature-icon"></div>
               <h3>UPI & Cashflow</h3>
               <p>Understand real-time income and expense patterns through UPI transaction volumes and velocity.</p>
             </div>
             <div className="feature-card">
-              <div className="feature-icon">📱</div>
+              <div className="feature-icon"></div>
               <h3>Utility & Telecom</h3>
               <p>Evaluate financial discipline via bill payment timeliness and telecom recharge consistency.</p>
             </div>

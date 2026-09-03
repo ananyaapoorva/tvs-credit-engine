@@ -215,7 +215,7 @@ const ApplicationForm = () => {
       {/* Mock Data Quick Fill */}
       <div className="card" style={{ marginBottom: '1.5rem', background: 'var(--primary-50)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
-          <span style={{ fontWeight: 600, fontSize: '0.85rem' }}>⚡ Quick Fill:</span>
+          <span style={{ fontWeight: 600, fontSize: '0.85rem' }}> Quick Fill:</span>
           {['Rajesh (Merchant)', 'Priya (Gig)', 'Mohammed (Wholesale)', 'Lakshmi (Informal)', 'Arjun (New)'].map((label, i) => (
             <button key={i} type="button" className="btn btn-sm btn-secondary"
               onClick={() => loadMockData(i)}>
@@ -233,7 +233,7 @@ const ApplicationForm = () => {
 
       {/* Personal Information */}
       <div className="form-section">
-        <h3 className="form-section-title">👤 Personal Information</h3>
+        <h3 className="form-section-title"> Personal Information</h3>
         <div className="form-row">
           {renderInput('Full Name', null, 'name', 'text', 'Enter full name')}
           {renderInput('Phone Number', null, 'phone_number', 'tel', '9876543210')}
@@ -256,7 +256,7 @@ const ApplicationForm = () => {
 
       {/* GST Data */}
       <div className="form-section">
-        <h3 className="form-section-title">📊 GST Data</h3>
+        <h3 className="form-section-title"> GST Data</h3>
         <div className="form-row">
           {renderInput('Annual Turnover', 'gst_data', 'annual_turnover', 'number', '₹ Amount', 'in INR')}
           {renderInput('Months Filed (Last 12)', 'gst_data', 'months_filed', 'number', '0-12')}
@@ -275,7 +275,7 @@ const ApplicationForm = () => {
 
       {/* UPI Data */}
       <div className="form-section">
-        <h3 className="form-section-title">💳 UPI Transaction Trends</h3>
+        <h3 className="form-section-title"> UPI Transaction Trends</h3>
         <div className="form-row">
           {renderInput('Monthly Transaction Volume', 'upi_data', 'monthly_transaction_volume', 'number', '₹ Amount', 'in INR')}
           {renderInput('Transaction Frequency', 'upi_data', 'transaction_frequency', 'number', 'per month')}
@@ -288,7 +288,7 @@ const ApplicationForm = () => {
 
       {/* Telecom Data */}
       <div className="form-section">
-        <h3 className="form-section-title">📱 Telecom Data</h3>
+        <h3 className="form-section-title"> Telecom Data</h3>
         <div className="form-row">
           {renderInput('Monthly Recharge (₹)', 'telecom_data', 'monthly_recharge_amount', 'number', '₹ Amount')}
           {renderInput('Months of History', 'telecom_data', 'months_of_history', 'number', 'months')}
@@ -298,7 +298,7 @@ const ApplicationForm = () => {
 
       {/* Utility Data */}
       <div className="form-section">
-        <h3 className="form-section-title">💡 Utility Payments</h3>
+        <h3 className="form-section-title"> Utility Payments</h3>
         <div className="form-row">
           {renderInput('Monthly Bill Amount (₹)', 'utility_data', 'monthly_bill_amount', 'number', '₹ Amount')}
           {renderInput('Months of History', 'utility_data', 'months_of_history', 'number', 'months')}
@@ -308,7 +308,7 @@ const ApplicationForm = () => {
 
       {/* E-commerce Data */}
       <div className="form-section">
-        <h3 className="form-section-title">🛒 E-commerce Activity</h3>
+        <h3 className="form-section-title"> E-commerce Activity</h3>
         <div className="form-row">
           {renderInput('Purchase Frequency', 'ecommerce_data', 'purchase_frequency', 'number', 'purchases/month')}
           {renderInput('Average Order Value (₹)', 'ecommerce_data', 'average_order_value', 'number', '₹ Amount')}
@@ -321,7 +321,7 @@ const ApplicationForm = () => {
 
       {/* Mobility Data */}
       <div className="form-section">
-        <h3 className="form-section-title">🚗 Mobility & Vehicle Usage</h3>
+        <h3 className="form-section-title"> Mobility & Vehicle Usage</h3>
         <div className="form-row">
           <div className="form-group">
             <label className="form-label">Vehicle Ownership</label>
@@ -356,7 +356,7 @@ const ApplicationForm = () => {
           Reset Form
         </button>
         <button type="submit" className="btn btn-primary btn-lg" disabled={loading} id="submit-application">
-          {loading ? 'Calculating...' : '🚀 Calculate Credit Score'}
+          {loading ? 'Calculating...' : ' Calculate Credit Score'}
         </button>
       </div>
     </form>

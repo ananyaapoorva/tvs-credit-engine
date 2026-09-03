@@ -14,7 +14,7 @@ const ExplainabilityCard = ({ explainability }) => {
   return (
     <div className="card animate-in animate-delay-3">
       <div className="card-header">
-        <h3 className="card-title">🔍 Risk Factor Analysis</h3>
+        <h3 className="card-title"> Risk Factor Analysis</h3>
       </div>
 
       <div className="factor-list">
@@ -43,7 +43,7 @@ const ExplainabilityCard = ({ explainability }) => {
           {summary && <p className="summary-text">{summary}</p>}
           {recommendation && (
             <div className="recommendation-panel">
-              <h4>💡 Recommendation</h4>
+              <h4> Recommendation</h4>
               <p>{recommendation}</p>
             </div>
           )}
