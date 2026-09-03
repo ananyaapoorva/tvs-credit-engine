@@ -1,3 +1,5 @@
+from typing import Optional, List, Dict
+from typing import Optional, List
 """Configuration settings for the TVS Credit Engine application."""
 
 
@@ -14,7 +16,7 @@ class Settings(BaseSettings):
     CORS_ORIGINS: str = "http://localhost:3000,http://localhost:5173"
 
     @property
-    def cors_origins_list(self) -> list[str]:
+    def cors_origins_list(self) -> List[str]:
         """Parse CORS origins from comma-separated string."""
         return [origin.strip() for origin in self.CORS_ORIGINS.split(",")]
 

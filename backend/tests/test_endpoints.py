@@ -8,6 +8,7 @@ and response format validation.
 import pytest
 from fastapi.testclient import TestClient
 
+import app.models
 from app.database import Base, engine
 from app.main import app
 

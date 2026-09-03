@@ -238,6 +238,9 @@ def score_ecommerce_data(data: EcommerceData) -> float:
     """
     raw = 0.0
 
+    if data.months_active == 0 and data.purchase_frequency == 0:
+        return 0.0
+
     # Purchase frequency score
     if data.purchase_frequency >= ECOMMERCE_HIGH_FREQUENCY:
         raw += ECOMMERCE_FREQUENCY_POINTS

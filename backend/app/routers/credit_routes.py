@@ -1,3 +1,4 @@
+from typing import Optional, List, Dict
 """
 Credit scoring API routes.
 

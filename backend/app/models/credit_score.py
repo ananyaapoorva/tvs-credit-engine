@@ -1,3 +1,4 @@
+from __future__ import annotations
 """Credit score database model."""
 
 import enum

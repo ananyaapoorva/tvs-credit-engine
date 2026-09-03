@@ -1,3 +1,4 @@
+from __future__ import annotations
 """Transaction database model for storing alternative data records."""
 
 import enum

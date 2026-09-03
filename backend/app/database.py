@@ -29,4 +29,8 @@ def get_db():
 
 def init_db():
     """Create all database tables."""
+    from app.models.customer import Customer
+    from app.models.credit_score import CreditScore
+    from app.models.transaction import Transaction
+    
     Base.metadata.create_all(bind=engine)

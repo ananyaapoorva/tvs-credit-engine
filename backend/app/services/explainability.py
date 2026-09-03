@@ -1,3 +1,4 @@
+from typing import Optional, List, Dict
 """
 Explainability service for generating human-readable risk factor explanations.
 
@@ -29,7 +30,7 @@ def _format_currency(amount: float) -> str:
 
 
 def generate_explanation(
-    scores: dict[str, float],
+    scores: Dict[str, float],
     input_data: dict,
 ) -> dict:
     """
