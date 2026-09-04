@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tvs-credit-engine"
+version = "1.1.0"
+description = "Deterministic, explainable alternative-data credit scoring engine"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "ananyaapoorva" }]
+dependencies = [
+    "fastapi>=0.104",
+    "uvicorn[standard]>=0.24",
+    "sqlalchemy>=2.0",
+    "pydantic>=2.5",
+    "pydantic-settings>=2.1",
+    "python-dotenv>=1.0",
+    "faker>=20.0",
+    "httpx>=0.25",
+    "aiosqlite>=0.19",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "pytest-cov>=4", "pytest-asyncio>=0.23", "ruff>=0.4"]
+
+[project.scripts]
+tvs-credit = "cli:main"
+
+[tool.setuptools]
+packages = ["app", "app.models", "app.routers", "app.schemas", "app.services", "app.utils"]
+py-modules = ["cli"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

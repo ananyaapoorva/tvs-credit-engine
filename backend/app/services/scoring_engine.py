@@ -92,12 +92,15 @@ def _normalize(raw: float, max_points: float) -> float:
     return _clamp((raw / max_points) * MAX_SCORE)
 
 
-def score_gst_data(data: GSTData) -> float:
+def score_gst_data(data: GSTData | None) -> float:
     """
     Score GST data based on turnover, filing consistency, and months filed.
 
-    Returns a score from 0-100.
+    Returns a score from 0-100. Returns 0.0 when no GST data is provided.
     """
+    if data is None:
+        return 0.0
+
     raw = 0.0
 
     # Turnover score (proportional up to threshold)
@@ -125,12 +128,15 @@ def score_gst_data(data: GSTData) -> float:
     return _normalize(max(raw, 0), GST_MAX_POINTS)
 
 
-def score_upi_data(data: UPIData) -> float:
+def score_upi_data(data: UPIData | None) -> float:
     """
     Score UPI data based on transaction volume, frequency, duration, and size.
 
-    Returns a score from 0-100.
+    Returns a score from 0-100. Returns 0.0 when no UPI data is provided.
     """
+    if data is None:
+        return 0.0
+
     raw = 0.0
 
     # Volume score
@@ -160,12 +166,15 @@ def score_upi_data(data: UPIData) -> float:
     return _normalize(raw, UPI_MAX_POINTS)
 
 
-def score_telecom_data(data: TelecomData) -> float:
+def score_telecom_data(data: TelecomData | None) -> float:
     """
     Score telecom data based on recharge consistency, amount, and history.
 
-    Returns a score from 0-100.
+    Returns a score from 0-100. Returns 0.0 when no telecom data is provided.
     """
+    if data is None:
+        return 0.0
+
     raw = 0.0
 
     # Consistency score
@@ -195,12 +204,15 @@ def score_telecom_data(data: TelecomData) -> float:
     return _normalize(raw, TELECOM_MAX_POINTS)
 
 
-def score_utility_data(data: UtilityData) -> float:
+def score_utility_data(data: UtilityData | None) -> float:
     """
     Score utility data based on bill payment timeliness, amount, and history.
 
-    Returns a score from 0-100.
+    Returns a score from 0-100. Returns 0.0 when no utility data is provided.
     """
+    if data is None:
+        return 0.0
+
     raw = 0.0
 
     # Payment timeliness score
@@ -230,12 +242,15 @@ def score_utility_data(data: UtilityData) -> float:
     return _normalize(raw, UTILITY_MAX_POINTS)
 
 
-def score_ecommerce_data(data: EcommerceData) -> float:
+def score_ecommerce_data(data: EcommerceData | None) -> float:
     """
     Score e-commerce data based on purchase frequency, return rate, and order value.
 
-    Returns a score from 0-100.
+    Returns a score from 0-100. Returns 0.0 when no e-commerce data is provided.
     """
+    if data is None:
+        return 0.0
+
     raw = 0.0
 
     if data.months_active == 0 and data.purchase_frequency == 0:
@@ -268,12 +283,15 @@ def score_ecommerce_data(data: EcommerceData) -> float:
     return _normalize(raw, ECOMMERCE_MAX_POINTS)
 
 
-def score_mobility_data(data: MobilityData) -> float:
+def score_mobility_data(data: MobilityData | None) -> float:
     """
     Score mobility data based on vehicle ownership, fuel consistency, and duration.
 
-    Returns a score from 0-100.
+    Returns a score from 0-100. Returns 0.0 when no mobility data is provided.
     """
+    if data is None:
+        return 0.0
+
     raw = 0.0
 
     # Vehicle ownership score

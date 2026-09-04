@@ -96,13 +96,33 @@ npm run dev
 
 ## Testing
 
-The backend includes a comprehensive test suite (83 tests) covering all scoring rules, business logic, and API endpoints.
+The backend includes a comprehensive test suite (103 tests) covering all scoring rules, business logic, null-data robustness, API endpoints, and the command-line interface.
 
 ```bash
 cd backend
 source venv/bin/activate
 PYTHONPATH=. python -m pytest tests/ -v --cov=app
 ```
+
+## Command-Line Interface
+
+The engine ships a headless CLI, `tvs-credit`, that scores an application JSON file through the exact same services the API uses -- no server or database required. This is useful for lending pipelines, batch scoring, and CI smoke checks.
+
+```bash
+# Install from source
+pip install -e "./backend[dev]"
+
+# Human-readable report
+tvs-credit application.json
+
+# Machine-readable JSON (pipeable -- only the JSON goes to stdout)
+tvs-credit --json application.json | jq .overall_risk_score
+
+# Version
+tvs-credit --version
+```
+
+The application file follows the same shape as the `POST /api/v1/credit/score` body. Any data source may be omitted or set to `null` (e.g. an informal-sector applicant with no GST history) -- it is scored as `0` and explained as "no data provided", exactly matching the API.
 
 ## API Endpoints
 
@@ -126,14 +146,15 @@ tvs-credit-engine/
 |   |-- app/
 |   |   |-- models/          # SQLAlchemy ORM models (Customer, CreditScore, Transaction)
 |   |   |-- schemas/         # Pydantic request/response schemas
-|   |   |-- services/        # Scoring engine, explainability, data validation
-|   |   |-- routers/         # FastAPI route handlers
-|   |   |-- utils/           # Constants, mock data generator
-|   |   |-- database.py      # Database connection and session management
-|   |   |-- config.py        # Environment configuration
-|   |   +-- main.py          # FastAPI application entry point
-|   |-- tests/               # 83 unit and integration tests
-|   +-- requirements.txt
+|   |-- services/        # Scoring engine, explainability, data validation
+|   |-- routers/         # FastAPI route handlers
+|   |-- utils/           # Constants, mock data generator
+|   |-- database.py      # Database connection and session management
+|   |-- config.py        # Environment configuration
+|   +-- main.py          # FastAPI application entry point
+|-- backend/cli.py           # Headless tvs-credit CLI (no server needed)
+|-- backend/pyproject.toml   # Packaging + console script
+|-- backend/tests/           # 103 unit and integration tests
 |-- frontend/
 |   |-- src/
 |   |   |-- components/      # ApplicationForm, ResultsDashboard, RiskGauge, ExplainabilityCard, TransactionHistory

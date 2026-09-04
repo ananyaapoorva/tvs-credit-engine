@@ -47,7 +47,7 @@ def generate_explanation(
 
     # ─── GST Explanations ────────────────────────────────────────────
     gst_score = scores.get("gst_score", 0)
-    gst_data = input_data.get("gst_data", {})
+    gst_data = input_data.get("gst_data") or {}
     turnover = gst_data.get("annual_turnover", 0)
     filing = gst_data.get("filing_consistency", 0)
 
@@ -86,7 +86,7 @@ def generate_explanation(
 
     # ─── UPI Explanations ────────────────────────────────────────────
     upi_score = scores.get("upi_score", 0)
-    upi_data = input_data.get("upi_data", {})
+    upi_data = input_data.get("upi_data") or {}
     upi_volume = upi_data.get("monthly_transaction_volume", 0)
     upi_freq = upi_data.get("transaction_frequency", 0)
 
@@ -125,7 +125,7 @@ def generate_explanation(
 
     # ─── Telecom Explanations ────────────────────────────────────────
     telecom_score = scores.get("telecom_score", 0)
-    telecom_data = input_data.get("telecom_data", {})
+    telecom_data = input_data.get("telecom_data") or {}
     telecom_consistency = telecom_data.get("recharge_consistency", 0)
     telecom_months = telecom_data.get("months_of_history", 0)
 
@@ -164,7 +164,7 @@ def generate_explanation(
 
     # ─── Utility Explanations ────────────────────────────────────────
     utility_score = scores.get("utility_score", 0)
-    utility_data = input_data.get("utility_data", {})
+    utility_data = input_data.get("utility_data") or {}
     utility_timeliness = utility_data.get("payment_timeliness", 0)
 
     if utility_score > 80:
@@ -202,7 +202,7 @@ def generate_explanation(
 
     # ─── E-commerce Explanations ─────────────────────────────────────
     ecommerce_score = scores.get("ecommerce_score", 0)
-    ecommerce_data = input_data.get("ecommerce_data", {})
+    ecommerce_data = input_data.get("ecommerce_data") or {}
     return_rate = ecommerce_data.get("return_rate", 0)
     purchase_freq = ecommerce_data.get("purchase_frequency", 0)
 
@@ -241,7 +241,7 @@ def generate_explanation(
 
     # ─── Mobility Explanations ───────────────────────────────────────
     mobility_score = scores.get("mobility_score", 0)
-    mobility_data = input_data.get("mobility_data", {})
+    mobility_data = input_data.get("mobility_data") or {}
     has_vehicle = mobility_data.get("vehicle_ownership", False)
     vehicle_type = mobility_data.get("vehicle_type", "none")
 

@@ -1,5 +1,4 @@
-from typing import Optional, List, Dict
-from typing import Optional, List
+from typing import List
 """Configuration settings for the TVS Credit Engine application."""
 
 
