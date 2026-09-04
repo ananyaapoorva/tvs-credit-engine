@@ -1090,34 +1090,7 @@ a:hover {
   }
 }
 
-/* ─── Premium Glassmorphism & Liquid Animations ──────────────────── */
 
-.liquid-bg {
-  position: relative;
-  overflow: hidden;
-  background: var(--bg-primary);
-  z-index: 1;
-}
-
-.liquid-bg::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at 50% 50%, rgba(0, 60, 155, 0.08) 0%, rgba(255, 255, 255, 0) 50%),
-              radial-gradient(circle at 80% 20%, rgba(0, 212, 255, 0.05) 0%, rgba(255, 255, 255, 0) 40%);
-  z-index: -1;
-  animation: liquidRotate 20s infinite linear;
-  pointer-events: none;
-}
-
-@keyframes liquidRotate {
-  0% { transform: rotate(0deg) scale(1); }
-  50% { transform: rotate(180deg) scale(1.1); }
-  100% { transform: rotate(360deg) scale(1); }
-}
 
 /* ─── Scroll-Driven Reveals ──────────────────────────────────────── */
 

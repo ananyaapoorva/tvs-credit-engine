@@ -1,4 +1,3 @@
-import { useState } from 'react';
 
 const RiskGauge = ({ score = 0, riskCategory = 'high', confidence = 0 }) => {
   const radius = 85;

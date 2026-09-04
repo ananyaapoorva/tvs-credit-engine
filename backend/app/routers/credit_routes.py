@@ -108,11 +108,6 @@ async def create_credit_score(
 
     # Generate explanations
     input_dict = application.model_dump()
-    # Convert nested pydantic models to dicts for explainability
-    for key in ["gst_data", "upi_data", "telecom_data", "utility_data", "ecommerce_data", "mobility_data"]:
-        if key in input_dict and input_dict[key] is not None:
-            pass  # already a dict from model_dump
-
     explanation = generate_explanation(scores, input_dict)
 
     # Create credit score record
