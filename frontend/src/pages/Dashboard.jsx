@@ -18,7 +18,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="features-section liquid-bg">
+      <div className="features-section">
         <div className="container">
           <h2 className="reveal-on-scroll">Why Alternative Data?</h2>
           <p className="subtitle reveal-on-scroll">Moving beyond traditional credit bureaus to score the unbanked and underbanked.</p>
