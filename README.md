@@ -1,20 +1,21 @@
 # TVS Credit EPIC 8 Hackathon: Alternative Data Credit Engine
 
 ## Problem Statement
-The objective of this project is to build an AI-powered alternative credit scoring engine. Traditional credit scoring relies heavily on credit bureau histories (like CIBIL), which excludes a massive segment of the population, including first-time borrowers, gig workers, small merchants, and informal sector workers. 
 
-This engine solves this problem by leveraging alternative data points—such as GST filings, UPI transaction trends, telecom recharge patterns, utility bill payments, e-commerce activity, and mobility/vehicle usage patterns—to generate deterministic, explainable risk scores.
+Traditional credit scoring relies heavily on credit bureau histories (like CIBIL), which excludes a massive segment of the population -- over 400 million Indians including first-time borrowers, gig workers, small merchants, and informal sector workers who have no formal credit file.
+
+This engine solves the problem by leveraging alternative data points -- GST filings, UPI transaction trends, telecom recharge patterns, utility bill payments, e-commerce activity, and mobility/vehicle usage patterns -- to generate deterministic, explainable risk scores.
 
 ## Key Features
 
 * **Multi-Source Alternative Data Integration:** Processes 6 disparate data sources (GST, UPI, Telecom, Utility, E-commerce, Mobility).
-* **Deterministic Rule-Based Scoring:** Transparent, explainable, and fully deterministic risk scoring logic mapped from 0-100.
+* **Deterministic Rule-Based Scoring:** Transparent, explainable, and fully deterministic risk scoring logic mapped from 0-100. No black-box ML models.
 * **Explainable AI (XAI) Output:** Generates human-readable summaries and categorizes risk factors (positive/negative/neutral) dynamically.
-* **Visual XAI Charts (Radar Charts):** Interactive geographic representation of a borrower's risk signature across all sectors using Recharts.
-* **Side-by-Side Applicant Comparison:** Dedicated UI to compare the risk profiles of two applicants simultaneously for rapid underwriting.
-* **Exportable Credit Reports:** One-click PDF generation of the entire credit assessment and XAI breakdown.
+* **Visual Risk Signature (Radar Charts):** Interactive visualization of a borrower's risk profile across all 6 sectors using Recharts.
+* **Side-by-Side Applicant Comparison:** Dedicated UI to compare the risk profiles of two applicants simultaneously with overlayed radar charts.
+* **Exportable Credit Reports:** One-click PDF generation of the complete credit assessment and XAI breakdown.
 * **Dynamic Weighting:** Calculates overall risk based on a weighted average tailored for gig and informal sectors.
-* **Comprehensive API:** FastAPI backend with robust Pydantic validation and comprehensive endpoints.
+* **Comprehensive API:** FastAPI backend with robust Pydantic validation, 7 endpoints, and auto-generated Swagger docs.
 * **Responsive Dashboard:** React/Vite frontend with an interactive multi-step application form and animated visual gauges.
 
 ## Architecture
@@ -43,35 +44,39 @@ graph TD
 
 ## Technology Stack
 
-* **Backend:** Python 3.11+, FastAPI, SQLAlchemy, Pydantic, Pytest (100% test pass rate)
-* **Frontend:** React 18, Vite, React Router, Custom CSS (No Tailwind)
-* **Infrastructure:** Docker, Docker Compose, GitHub Actions (CI/CD)
+* **Backend:** Python 3.11+, FastAPI, SQLAlchemy, Pydantic, Pytest (83 tests, 100% pass rate)
+* **Frontend:** React 18, Vite, React Router, Recharts, Custom CSS Design System
+* **Infrastructure:** Docker, Docker Compose, GitHub Actions CI/CD
+* **Database:** SQLite (development), PostgreSQL-ready (production)
 
-## Alternative Scoring Algorithm
+## Scoring Components
 
-The engine calculates risk deterministically using the following weighted data sources. If a data source is completely missing, the engine dynamically redistributes the weight proportionally to the remaining provided data sources.
+| Source | Weight | Data Points |
+|---|---|---|
+| GST | 20% | Turnover, filing consistency, months filed, business type |
+| UPI | 20% | Transaction volume, frequency, duration, average size |
+| Telecom | 15% | Recharge amount, consistency, history length |
+| Utility | 15% | Bill amount, payment timeliness, history length |
+| E-commerce | 15% | Purchase frequency, return rate, order value, duration |
+| Mobility | 15% | Vehicle ownership, fuel expense, tracking duration, vehicle type |
 
-* **UPI Data (30%):** Evaluates transaction velocity, volume, and consistency over active months.
-* **GST Data (25%):** Assesses business health via annual turnover thresholds and filing consistency. High-risk business types receive dynamic penalties.
-* **Telecom Data (15%):** Calculates financial discipline through monthly recharge amounts and historical consistency.
-* **Utility Data (15%):** Weighs bill payment timeliness and historical track records.
-* **E-commerce Data (10%):** Analyzes purchase frequency and penalizes high return rates (which indicate cashflow instability).
-* **Mobility Data (5%):** Adds supplementary confidence based on vehicle ownership and fuel expense tracking.
+For a detailed walkthrough of the scoring algorithm with worked examples, see [Algorithm Explanation](./docs/ALGORITHM_EXPLANATION.md).
 
-## Setup & Installation
+## Setup and Installation
 
 ### Option 1: Docker Compose (Recommended)
 
-1. Ensure you have Docker and Docker Compose installed.
-2. Clone the repository and run:
-    ```bash
-    docker compose up --build
-    ```
-3. Access the applications:
-    * **Frontend Dashboard:** `http://localhost:80`
-    * **Backend API Docs (Swagger):** `http://localhost:8000/docs`
+```bash
+git clone https://github.com/ananyaapoorva/tvs-credit-engine.git
+cd tvs-credit-engine
+docker compose up --build
+```
 
-### Option 2: Local Development Setup
+Access the applications:
+* **Frontend Dashboard:** http://localhost:80
+* **Backend API Docs (Swagger):** http://localhost:8000/docs
+
+### Option 2: Local Development
 
 **Backend:**
 ```bash
@@ -91,12 +96,12 @@ npm run dev
 
 ## Testing
 
-The backend includes a comprehensive test suite covering all scoring rules, business logic, and API endpoints.
+The backend includes a comprehensive test suite (83 tests) covering all scoring rules, business logic, and API endpoints.
 
 ```bash
 cd backend
 source venv/bin/activate
-PYTHONPATH=. python -m pytest tests/ -v --cov=app --cov-report=xml
+PYTHONPATH=. python -m pytest tests/ -v --cov=app
 ```
 
 ## API Endpoints
@@ -104,9 +109,52 @@ PYTHONPATH=. python -m pytest tests/ -v --cov=app --cov-report=xml
 | Method | Endpoint | Description |
 | :--- | :--- | :--- |
 | `GET` | `/api/v1/health` | System health check |
-| `POST` | `/api/v1/credit/score` | Submit application & calculate score |
+| `POST` | `/api/v1/credit/score` | Submit application and calculate score |
 | `GET` | `/api/v1/credit/score/{id}` | Retrieve specific credit score by ID |
 | `GET` | `/api/v1/credit/customer/{id}/scores` | Get all scores for a customer |
 | `GET` | `/api/v1/credit/customers` | Fetch recent customers for comparison |
 | `POST` | `/api/v1/credit/compare` | Compare two customers' scores |
 | `GET` | `/api/v1/credit/mock-customers` | Fetch 10 diverse mock profiles for testing |
+
+For full request/response examples, see [API Documentation](./docs/API_DOCUMENTATION.md).
+
+## Project Structure
+
+```
+tvs-credit-engine/
+|-- backend/
+|   |-- app/
+|   |   |-- models/          # SQLAlchemy ORM models (Customer, CreditScore, Transaction)
+|   |   |-- schemas/         # Pydantic request/response schemas
+|   |   |-- services/        # Scoring engine, explainability, data validation
+|   |   |-- routers/         # FastAPI route handlers
+|   |   |-- utils/           # Constants, mock data generator
+|   |   |-- database.py      # Database connection and session management
+|   |   |-- config.py        # Environment configuration
+|   |   +-- main.py          # FastAPI application entry point
+|   |-- tests/               # 83 unit and integration tests
+|   +-- requirements.txt
+|-- frontend/
+|   |-- src/
+|   |   |-- components/      # ApplicationForm, ResultsDashboard, RiskGauge, ExplainabilityCard, TransactionHistory
+|   |   |-- pages/           # Dashboard, Results, CompareApplicants
+|   |   |-- services/        # API client (api.js)
+|   |   |-- App.jsx          # Router and layout
+|   |   +-- index.css        # Complete CSS design system
+|   +-- package.json
+|-- docs/                    # API docs, Algorithm explanation, Deployment guide
+|-- .github/workflows/      # CI/CD pipeline (backend tests, frontend build, Docker build)
+|-- docker-compose.yml
+|-- CONTRIBUTING.md
+|-- CHANGELOG.md
++-- README.md
+```
+
+## Documentation
+
+* [API Documentation](./docs/API_DOCUMENTATION.md) -- Full endpoint reference with request/response examples
+* [Algorithm Explanation](./docs/ALGORITHM_EXPLANATION.md) -- Detailed scoring logic with worked examples
+* [Deployment Guide](./docs/DEPLOYMENT.md) -- Local, Docker, and production setup
+* [Contributing](./CONTRIBUTING.md) -- Development guidelines and commit conventions
+* [Changelog](./CHANGELOG.md) -- Version history and release notes
+
