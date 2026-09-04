@@ -1,41 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  /* ─── Color System (Midnight Glass Theme) ──────────────────────── */
-  --primary: #00d4ff;
-  --primary-light: #5ce1ff;
-  --primary-dark: #0099cc;
-  --primary-50: rgba(0, 212, 255, 0.1);
+  /* ─── Color System (Frosted Blue Glass Theme) ──────────────────────── */
+  --primary: #003C9B;
+  --primary-light: #2563EB;
+  --primary-dark: #1E3A8A;
+  --primary-50: #eff6ff;
 
-  --success: #00ffaa;
-  --success-light: #5effc2;
-  --success-bg: rgba(0, 255, 170, 0.1);
+  --success: #10B981;
+  --success-light: #34D399;
+  --success-bg: #ecfdf5;
 
-  --warning: #ffbe0b;
-  --warning-light: #ffd15c;
-  --warning-bg: rgba(255, 190, 11, 0.1);
+  --warning: #F59E0B;
+  --warning-light: #FBBF24;
+  --warning-bg: #fffbeb;
 
-  --danger: #ff0055;
-  --danger-light: #ff5c93;
-  --danger-bg: rgba(255, 0, 85, 0.1);
+  --danger: #EF4444;
+  --danger-light: #F87171;
+  --danger-bg: #fef2f2;
 
-  --bg-primary: #050b14;
-  --bg-secondary: rgba(255, 255, 255, 0.03);
-  --bg-card: rgba(255, 255, 255, 0.04);
-  --bg-input: rgba(255, 255, 255, 0.06);
+  --bg-primary: #f8fafc;
+  --bg-secondary: rgba(255, 255, 255, 0.7);
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --bg-input: #ffffff;
 
-  --text-primary: #ffffff;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  --text-inverse: #050b14;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --text-inverse: #ffffff;
 
-  --border: rgba(255, 255, 255, 0.1);
+  --border: rgba(148, 163, 184, 0.2);
   --border-focus: var(--primary);
 
-  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5);
-  --shadow-xl: 0 24px 60px rgba(0, 0, 0, 0.6);
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 24px 60px rgba(0, 0, 0, 0.15);
 
   /* ─── Typography ───────────────────────────────────────────────── */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -1020,8 +1020,8 @@ a:hover {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.15) 0%, rgba(0, 0, 0, 0) 50%),
-              radial-gradient(circle at 80% 20%, rgba(255, 0, 85, 0.08) 0%, rgba(0, 0, 0, 0) 40%);
+  background: radial-gradient(circle at 50% 50%, rgba(0, 60, 155, 0.08) 0%, rgba(255, 255, 255, 0) 50%),
+              radial-gradient(circle at 80% 20%, rgba(0, 212, 255, 0.05) 0%, rgba(255, 255, 255, 0) 40%);
   z-index: -1;
   animation: liquidRotate 20s infinite linear;
   pointer-events: none;
