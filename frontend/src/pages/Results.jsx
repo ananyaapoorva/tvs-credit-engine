@@ -14,6 +14,10 @@ const Results = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     if (!scoreData && scoreId) {
       loadScore();
     }

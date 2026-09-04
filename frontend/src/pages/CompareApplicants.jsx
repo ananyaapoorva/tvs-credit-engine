@@ -13,6 +13,7 @@ const CompareApplicants = () => {
   const [customersLoading, setCustomersLoading] = useState(true);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchCustomers = async () => {
       try {
         const response = await fetch(`${API_BASE_URL}/credit/customers`);
