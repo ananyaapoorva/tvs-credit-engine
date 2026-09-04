@@ -4,7 +4,7 @@ import ApplicationForm from '../components/ApplicationForm';
 const Dashboard = () => {
   return (
     <>
-      <div className="hero liquid-bg">
+      <div className="hero">
         <div className="hero-content reveal-on-scroll">
           <h1>Alternative Data Credit Scoring Engine</h1>
           <p>
