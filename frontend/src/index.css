@@ -630,8 +630,7 @@ a:hover {
 .hero {
   text-align: center;
   padding: 5rem 2rem 4rem;
-  background: linear-gradient(135deg, #003C9B 0%, #1a5cc4 50%, #2563eb 100%);
-  color: white;
+  color: var(--text-primary);
   position: relative;
   overflow: hidden;
 }
