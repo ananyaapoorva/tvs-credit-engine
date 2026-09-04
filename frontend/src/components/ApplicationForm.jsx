@@ -232,7 +232,7 @@ const ApplicationForm = () => {
       )}
 
       {/* Personal Information */}
-      <div className="form-section">
+      <div className="form-section reveal-on-scroll">
         <h3 className="form-section-title"> Personal Information</h3>
         <div className="form-row">
           {renderInput('Full Name', null, 'name', 'text', 'Enter full name')}
@@ -255,7 +255,7 @@ const ApplicationForm = () => {
       </div>
 
       {/* GST Data */}
-      <div className="form-section">
+      <div className="form-section reveal-on-scroll">
         <h3 className="form-section-title"> GST Data</h3>
         <div className="form-row">
           {renderInput('Annual Turnover', 'gst_data', 'annual_turnover', 'number', '₹ Amount', 'in INR')}
@@ -274,7 +274,7 @@ const ApplicationForm = () => {
       </div>
 
       {/* UPI Data */}
-      <div className="form-section">
+      <div className="form-section reveal-on-scroll">
         <h3 className="form-section-title"> UPI Transaction Trends</h3>
         <div className="form-row">
           {renderInput('Monthly Transaction Volume', 'upi_data', 'monthly_transaction_volume', 'number', '₹ Amount', 'in INR')}
@@ -287,7 +287,7 @@ const ApplicationForm = () => {
       </div>
 
       {/* Telecom Data */}
-      <div className="form-section">
+      <div className="form-section reveal-on-scroll">
         <h3 className="form-section-title"> Telecom Data</h3>
         <div className="form-row">
           {renderInput('Monthly Recharge (₹)', 'telecom_data', 'monthly_recharge_amount', 'number', '₹ Amount')}
@@ -297,7 +297,7 @@ const ApplicationForm = () => {
       </div>
 
       {/* Utility Data */}
-      <div className="form-section">
+      <div className="form-section reveal-on-scroll">
         <h3 className="form-section-title"> Utility Payments</h3>
         <div className="form-row">
           {renderInput('Monthly Bill Amount (₹)', 'utility_data', 'monthly_bill_amount', 'number', '₹ Amount')}
@@ -307,7 +307,7 @@ const ApplicationForm = () => {
       </div>
 
       {/* E-commerce Data */}
-      <div className="form-section">
+      <div className="form-section reveal-on-scroll">
         <h3 className="form-section-title"> E-commerce Activity</h3>
         <div className="form-row">
           {renderInput('Purchase Frequency', 'ecommerce_data', 'purchase_frequency', 'number', 'purchases/month')}
@@ -320,7 +320,7 @@ const ApplicationForm = () => {
       </div>
 
       {/* Mobility Data */}
-      <div className="form-section">
+      <div className="form-section reveal-on-scroll">
         <h3 className="form-section-title"> Mobility & Vehicle Usage</h3>
         <div className="form-row">
           <div className="form-group">

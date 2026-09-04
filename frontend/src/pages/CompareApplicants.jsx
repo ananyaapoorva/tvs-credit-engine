@@ -93,11 +93,11 @@ const CompareApplicants = () => {
             <div style={{ height: '400px', width: '100%' }}>
               <ResponsiveContainer width="100%" height="100%">
                 <RadarChart cx="50%" cy="50%" outerRadius="80%" data={formatChartData(compareData.customer_1, compareData.customer_2)}>
-                  <PolarGrid />
-                  <PolarAngleAxis dataKey="subject" />
-                  <PolarRadiusAxis angle={30} domain={[0, 100]} />
-                  <Radar name={customers.find(c => c.customer_id === selectedCustomer1)?.name || "Applicant 1"} dataKey="A" stroke="#003C9B" fill="#003C9B" fillOpacity={0.3} />
-                  <Radar name={customers.find(c => c.customer_id === selectedCustomer2)?.name || "Applicant 2"} dataKey="B" stroke="#F59E0B" fill="#F59E0B" fillOpacity={0.3} />
+                  <PolarGrid stroke="var(--border)" />
+                  <PolarAngleAxis dataKey="subject" tick={{ fill: 'var(--text-secondary)' }} />
+                  <PolarRadiusAxis angle={30} domain={[0, 100]} stroke="none" tick={false} />
+                  <Radar name={customers.find(c => c.customer_id === selectedCustomer1)?.name || "Applicant 1"} dataKey="A" stroke="var(--primary)" fill="var(--primary)" fillOpacity={0.3} />
+                  <Radar name={customers.find(c => c.customer_id === selectedCustomer2)?.name || "Applicant 2"} dataKey="B" stroke="var(--warning)" fill="var(--warning)" fillOpacity={0.3} />
                   <Tooltip />
                   <Legend />
                 </RadarChart>
@@ -108,7 +108,7 @@ const CompareApplicants = () => {
           <div className="results-grid">
             {/* Applicant 1 */}
             <div className="card">
-              <h3 className="card-title" style={{ color: '#003C9B' }}>{customers.find(c => c.customer_id === selectedCustomer1)?.name || "Applicant 1"}</h3>
+              <h3 className="card-title" style={{ color: 'var(--primary)' }}>{customers.find(c => c.customer_id === selectedCustomer1)?.name || "Applicant 1"}</h3>
               <div className="risk-gauge-container">
                 <div className="risk-gauge-score">{Math.round(compareData.customer_1.overall_risk_score)}</div>
                 <div className="risk-gauge-label">Score</div>
@@ -118,7 +118,7 @@ const CompareApplicants = () => {
             
             {/* Applicant 2 */}
             <div className="card">
-              <h3 className="card-title" style={{ color: '#F59E0B' }}>{customers.find(c => c.customer_id === selectedCustomer2)?.name || "Applicant 2"}</h3>
+              <h3 className="card-title" style={{ color: 'var(--warning)' }}>{customers.find(c => c.customer_id === selectedCustomer2)?.name || "Applicant 2"}</h3>
               <div className="risk-gauge-container">
                 <div className="risk-gauge-score">{Math.round(compareData.customer_2.overall_risk_score)}</div>
                 <div className="risk-gauge-label">Score</div>

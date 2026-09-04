@@ -38,9 +38,9 @@ const ResultsDashboard = ({ scoreData }) => {
       <div style={{ height: '250px', width: '100%', marginBottom: '1.5rem' }}>
         <ResponsiveContainer width="100%" height="100%">
           <RadarChart cx="50%" cy="50%" outerRadius="70%" data={radarData}>
-            <PolarGrid />
-            <PolarAngleAxis dataKey="subject" tick={{ fontSize: 10 }} />
-            <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} />
+            <PolarGrid stroke="var(--border)" />
+            <PolarAngleAxis dataKey="subject" tick={{ fill: 'var(--text-secondary)', fontSize: 10 }} />
+            <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} stroke="none" />
             <Radar name="Score" dataKey="A" stroke="var(--primary)" fill="var(--primary)" fillOpacity={0.4} />
             <Tooltip />
           </RadarChart>

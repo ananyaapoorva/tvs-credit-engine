@@ -1,41 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  /* ─── Color System ─────────────────────────────────────────────── */
-  --primary: #003C9B;
-  --primary-light: #1a5cc4;
-  --primary-dark: #002a6e;
-  --primary-50: #e6eef8;
+  /* ─── Color System (Midnight Glass Theme) ──────────────────────── */
+  --primary: #00d4ff;
+  --primary-light: #5ce1ff;
+  --primary-dark: #0099cc;
+  --primary-50: rgba(0, 212, 255, 0.1);
 
-  --success: #10B981;
-  --success-light: #34d399;
-  --success-bg: #ecfdf5;
+  --success: #00ffaa;
+  --success-light: #5effc2;
+  --success-bg: rgba(0, 255, 170, 0.1);
 
-  --warning: #F59E0B;
-  --warning-light: #fbbf24;
-  --warning-bg: #fffbeb;
+  --warning: #ffbe0b;
+  --warning-light: #ffd15c;
+  --warning-bg: rgba(255, 190, 11, 0.1);
 
-  --danger: #EF4444;
-  --danger-light: #f87171;
-  --danger-bg: #fef2f2;
+  --danger: #ff0055;
+  --danger-light: #ff5c93;
+  --danger-bg: rgba(255, 0, 85, 0.1);
 
-  --bg-primary: #F9FAFB;
-  --bg-secondary: #ffffff;
-  --bg-card: #ffffff;
-  --bg-input: #f3f4f6;
+  --bg-primary: #050b14;
+  --bg-secondary: rgba(255, 255, 255, 0.03);
+  --bg-card: rgba(255, 255, 255, 0.04);
+  --bg-input: rgba(255, 255, 255, 0.06);
 
-  --text-primary: #1F2937;
-  --text-secondary: #6B7280;
-  --text-muted: #9CA3AF;
-  --text-inverse: #ffffff;
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-inverse: #050b14;
 
-  --border: #E5E7EB;
-  --border-focus: #003C9B;
+  --border: rgba(255, 255, 255, 0.1);
+  --border-focus: var(--primary);
 
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 24px 60px rgba(0, 0, 0, 0.6);
 
   /* ─── Typography ───────────────────────────────────────────────── */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -100,8 +100,8 @@ a:hover {
   position: sticky;
   top: 0;
   z-index: 100;
-  backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .navbar .container {
@@ -222,7 +222,9 @@ a:hover {
   border-radius: var(--radius-lg);
   padding: 1.5rem;
   box-shadow: var(--shadow-sm);
-  transition: box-shadow var(--transition-base);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
 }
 
 .card:hover {
@@ -300,6 +302,8 @@ a:hover {
   border-radius: var(--radius-lg);
   padding: 1.5rem;
   margin-bottom: 1.5rem;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .form-section-title {
@@ -997,5 +1001,55 @@ a:hover {
     background: transparent;
     border-left-width: 2px;
     padding: 0.5rem 0;
+  }
+}
+
+/* ─── Premium Glassmorphism & Liquid Animations ──────────────────── */
+
+.liquid-bg {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-primary);
+  z-index: 1;
+}
+
+.liquid-bg::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.15) 0%, rgba(0, 0, 0, 0) 50%),
+              radial-gradient(circle at 80% 20%, rgba(255, 0, 85, 0.08) 0%, rgba(0, 0, 0, 0) 40%);
+  z-index: -1;
+  animation: liquidRotate 20s infinite linear;
+  pointer-events: none;
+}
+
+@keyframes liquidRotate {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* ─── Scroll-Driven Reveals ──────────────────────────────────────── */
+
+@keyframes revealFadeUp {
+  from { opacity: 0; transform: translateY(30px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.reveal-on-scroll {
+  animation: revealFadeUp auto ease both;
+  animation-timeline: view();
+  animation-range: entry 10% cover 25%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
