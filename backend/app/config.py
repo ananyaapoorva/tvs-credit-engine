@@ -1,6 +1,6 @@
 from typing import Optional, List, Dict
 from typing import Optional, List
-"""Configuration settings for the TVS Credit Engine application."""
+"""Configuration settings for the Credit Scoring Engine application."""
 
 
 from pydantic_settings import BaseSettings

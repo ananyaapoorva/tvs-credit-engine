@@ -1,4 +1,4 @@
-# Contributing to TVS Credit Engine
+# Contributing to Credit Scoring Engine
 
 ## Development Setup
 
