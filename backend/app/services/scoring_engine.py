@@ -98,6 +98,9 @@ def score_gst_data(data: GSTData) -> float:
 
     Returns a score from 0-100.
     """
+    if not data:
+        return 0.0
+
     raw = 0.0
 
     # Turnover score (proportional up to threshold)
@@ -131,6 +134,9 @@ def score_upi_data(data: UPIData) -> float:
 
     Returns a score from 0-100.
     """
+    if not data:
+        return 0.0
+
     raw = 0.0
 
     # Volume score
@@ -166,6 +172,9 @@ def score_telecom_data(data: TelecomData) -> float:
 
     Returns a score from 0-100.
     """
+    if not data:
+        return 0.0
+
     raw = 0.0
 
     # Consistency score
@@ -201,6 +210,9 @@ def score_utility_data(data: UtilityData) -> float:
 
     Returns a score from 0-100.
     """
+    if not data:
+        return 0.0
+
     raw = 0.0
 
     # Payment timeliness score
@@ -236,6 +248,9 @@ def score_ecommerce_data(data: EcommerceData) -> float:
 
     Returns a score from 0-100.
     """
+    if not data:
+        return 0.0
+
     raw = 0.0
 
     if data.months_active == 0 and data.purchase_frequency == 0:
@@ -274,6 +289,9 @@ def score_mobility_data(data: MobilityData) -> float:
 
     Returns a score from 0-100.
     """
+    if not data:
+        return 0.0
+
     raw = 0.0
 
     # Vehicle ownership score
