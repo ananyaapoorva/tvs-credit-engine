@@ -13,7 +13,7 @@ class Settings(BaseSettings):
     API_HOST: str = "0.0.0.0"
     API_PORT: int = 8000
     LOG_LEVEL: str = "INFO"
-    CORS_ORIGINS: str = "http://localhost:3000,http://localhost:5173"
+    CORS_ORIGINS: str = "http://localhost:3000,http://localhost:5173,https://*.vercel.app,https://tvs-credit-engine.onrender.com"
 
     @property
     def cors_origins_list(self) -> List[str]:
