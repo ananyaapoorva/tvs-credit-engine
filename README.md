@@ -1,4 +1,8 @@
-# TVS Credit EPIC 8 Hackathon: Alternative Data Credit Engine
+# TVS Credit EPIC 8 Hackathon: Alternative Data Credit Scoring Engine
+
+## Live Demo
+* **Frontend (Vercel):** [https://tvs-credit-engine.vercel.app](https://tvs-credit-engine.vercel.app)
+* **Backend API Docs (Render):** [https://tvs-credit-engine.onrender.com/docs](https://tvs-credit-engine.onrender.com/docs)
 
 ## Problem Statement
 
@@ -93,6 +97,12 @@ cd frontend
 npm install
 npm run dev
 ```
+
+### Option 3: Cloud Deployment (Vercel + Render)
+
+The project includes configuration for seamless cloud deployment:
+1. **Backend (Render):** Deploy the repository to Render as a Web Service. The included `render.yaml` and `.python-version` (3.11.7) handle the environment and pre-built SQLite dependencies automatically.
+2. **Frontend (Vercel):** Deploy the `frontend` directory to Vercel. Add the `VITE_API_URL` environment variable pointing to your Render backend URL (e.g., `https://your-backend.onrender.com/api/v1`). The included `vercel.json` configures the React Router SPA fallback.
 
 ## Testing
 
