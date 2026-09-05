@@ -109,7 +109,10 @@ const ApplicationForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setApiError('');
-    if (!validate()) return;
+    if (!validate()) {
+      alert("Please fill in all required Personal Information fields correctly (Name, Phone, Email, DOB, Loan Amount).");
+      return;
+    }
     setLoading(true);
     try {
       const payload = buildPayload();
