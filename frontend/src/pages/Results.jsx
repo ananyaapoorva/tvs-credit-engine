@@ -80,7 +80,7 @@ const Results = () => {
             <RiskGauge 
               score={scoreData.overall_risk_score} 
               riskCategory={scoreData.risk_category} 
-              confidence={scoreData.confidence_score * 100}
+              confidence={scoreData.confidence_level ?? (scoreData.confidence_score != null ? scoreData.confidence_score * 100 : 0)}
             />
           </div>
           

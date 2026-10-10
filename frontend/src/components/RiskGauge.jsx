@@ -1,5 +1,6 @@
 
 const RiskGauge = ({ score = 0, riskCategory = 'high', confidence = 0 }) => {
+  const safeConfidence = Number.isFinite(confidence) ? Math.max(0, Math.min(100, confidence)) : 0;
   const radius = 85;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - (score / 100) * circumference;
@@ -44,9 +45,9 @@ const RiskGauge = ({ score = 0, riskCategory = 'high', confidence = 0 }) => {
       <div className="confidence-bar" style={{ width: '100%', marginTop: '1rem' }}>
         <span className="confidence-label">Confidence</span>
         <div className="confidence-track">
-          <div className="confidence-fill" style={{ width: `${confidence}%` }} />
+          <div className="confidence-fill" style={{ width: `${safeConfidence}%` }} />
         </div>
-        <span className="confidence-value">{confidence.toFixed(0)}%</span>
+        <span className="confidence-value">{safeConfidence.toFixed(0)}%</span>
       </div>
     </div>
   );
